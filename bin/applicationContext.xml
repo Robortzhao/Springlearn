@@ -1,10 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
-	<!-- 配置bean -->
+	<!-- 
+	  	配置bean 
+		class:bean的全类名，通过反射的方式在IOC容器中创建bean,所有必须要求bean中必须要有无参的构造函数
+		id:表示容器中的bean. id 唯一
+	-->
+	<!--属性注入 setter方法-->
 	<bean id="helloworld" class="com.springlearn.bean.HelloWorld">
 		<property name="name" value="Spring"></property>
 	</bean>
+	
+	<!-- 通过构造方法配置bean的属性,可以指定参数的位置和类型，以区分重载的构造器 -->
+	<bean id="car" class="com.springlearn.bean.Car">
+		<constructor-arg value="Audi" index="0"></constructor-arg>
+		<constructor-arg value="Shanghai" index="1"></constructor-arg>
+		<constructor-arg value="250" type="double"></constructor-arg>
+	</bean>
+	
+	<bean id="car2" class="com.springlearn.bean.Car">
+		<constructor-arg value="BMW" type="java.lang.String"></constructor-arg>
+		<!-- 属性可以通过value子节点进行配置，特殊字符应用<![CDATA[]]> 包裹起来-->
+		<constructor-arg type="java.lang.String">
+			<value><![CDATA[<Shanghai>]]></value>
+		</constructor-arg>
+		<constructor-arg type="int">
+			<value>260</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="car3" class="com.springlearn.beans.collection.Car">
+		<constructor-arg value="Audi" index="0"></constructor-arg>
+		<constructor-arg value="Shanghai" index="1"></constructor-arg>
+		<constructor-arg value="300000" type="double"></constructor-arg>
+		<constructor-arg value="210" type="int"></constructor-arg>
+		
+	</bean>
+	
+	<bean id="car4" class="com.springlearn.beans.collection.Car">
+		<constructor-arg value="baoma" index="0"></constructor-arg>
+		<constructor-arg value="Shanghai" index="1"></constructor-arg>
+		<constructor-arg value="300000" type="double"></constructor-arg>
+		<constructor-arg value="230" type="int"></constructor-arg>
+	</bean>
+	
+	<bean id="car5" class="com.springlearn.beans.collection.Car">
+		<constructor-arg value="pengchi" index="0"></constructor-arg>
+		<constructor-arg value="Shanghai" index="1"></constructor-arg>
+		<constructor-arg value="300000" type="double"></constructor-arg>
+		<constructor-arg value="250" type="int"></constructor-arg>
+	</bean>
+	
+	<bean id="person1" class="com.springlearn.bean.Person">
+		<property name="name" value="Tom"></property>
+		<property name="age" value="25"></property>
+		<!-- 关联bean的两种方式 -->
+		<!-- 
+		<property name="car" ref="car1"></property>
+		 -->
+		<!--  
+		<property name="car">
+			<ref bean="car1"/>
+		</property>
+		-->
+		<!-- 内部bean，不能被外部访问，只能在内部应用  -->
+		<property name="car">
+			<bean class="com.springlearn.bean.Car">
+			<constructor-arg value="pengchi" index="0"></constructor-arg>
+			<constructor-arg value="Shanghai" index="1"></constructor-arg>
+			<constructor-arg value="300000" type="double"></constructor-arg>
+			</bean>
+		</property>
+		<property name="car.maxSpeed" value="200"></property>
+		
+	</bean>
+	
+	<bean id="person2" class="com.springlearn.bean.Person">
+		<constructor-arg value="Haizi"></constructor-arg>
+		<constructor-arg value="23"></constructor-arg>
+		<!-- 测试null -->
+		<!--  <constructor-arg><null/></constructor-arg> -->
+		<constructor-arg ref="car"></constructor-arg>
+		<!-- 为级联属性赋值。注意：属性需要先初始化后才可以为级联属性赋值，否则会有异常，和struct2不同 -->
+		<property name="car.price" value="1000000"></property>
+		<property name="car.maxSpeed" value="300"></property>
+	</bean>
+	
+	<!-- 测试配置集合属性 -->
+	<bean id="person3" class="com.springlearn.beans.collection.Person">
+		<property name="name" value="zhangsan"></property>
+		<property name="age" value="23"></property>
+		<property name="cars">
+		<!-- 使用list结点给list类型的集合赋值 -->
+			<list>
+				<ref bean="car3"/>
+				<ref bean="car4"/>
+				<ref bean="car5"/>
+			</list>
+		</property> 
+		
+	</bean>
+	<!-- 测试用构造函数配置 -->
+	<bean id="person4" class="com.springlearn.beans.collection.Person">
+		<constructor-arg value="lisi"></constructor-arg>
+		<constructor-arg value="25"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="car3"/>
+				<ref bean="car4"/>
+				<ref bean="car5"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- 测试Map配置方式 -->
+	<bean id="newPerson" class="com.springlearn.beans.collection.NewPerson">
+		<property name="name" value="Rose"></property>
+		<property name="age" value="23"></property>
+		<property name="cars">
+		<!-- 使用Map结点配置map集合 -->
+			<map>
+				<entry key="AA"  value-ref="car3"></entry>
+				<entry key="BB"  value-ref="car4"></entry>
+				<entry key="CC"  value-ref="car5"></entry>
+			</map>
+		</property> 
+	</bean>
+	
+	<!-- 配置Properties属性 -->
+	<bean id="dataSource" class="com.springlearn.beans.collection.DataSource">
+		<property name="properties">
+		<!-- 使用props和prop子节点配置Properties -->
+			<props>
+				<prop key="driverClass">driverClass</prop>
+				<prop key="jdbUrl">jdbcUrl</prop>
+				<prop key="user">user</prop>
+				<prop key="password">password</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 配置单例的集合bean,以供多个bean引用，需要导入util命名空间 -->
+	<util:list id="cars">
+		<ref bean="car3"/>
+		<ref bean="car4"/>
+	</util:list>
+	 <!-- 测试单例集合Bean -->
+	 <bean id="person5" class="com.springlearn.beans.collection.Person">
+	 	<property name="name" value="Jack"></property>
+	 	<property name="age" value="40"></property>
+	 	<property name="cars" ref="cars"></property>
+	 </bean>
+	 
+	 <!-- 使用P命令空间为bean的属性赋值，需要先导入p命令空间,相对于传统配置方式更简洁 -->
+	 <bean id="person6" class="com.springlearn.beans.collection.Person"
+	 p:age="45" p:name="Mask" p:cars-ref="cars"
+	 >
+	 </bean>	 
+	
 </beans>

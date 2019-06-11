@@ -5,7 +5,7 @@ public class HelloWorld {
 	private String name;
 	
 	public void setName(String name) {
-		System.out.println("setName methods");
+//		System.out.println("setName methods");
 		this.name = name;
 	}
 	
@@ -14,7 +14,7 @@ public class HelloWorld {
 		System.out.println("hello: "+name);
 	}
 	public HelloWorld() {
-		System.out.println("Spring hello");
+//		System.out.println("Spring hello");
 	}
 	
 }

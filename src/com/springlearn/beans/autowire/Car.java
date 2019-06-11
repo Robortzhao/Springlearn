@@ -19,6 +19,9 @@ public class Car {
 	public String toString() {
 		return "Car [brand=" + brand + ", price=" + price + "]";
 	}
+	public Car() {
+		System.out.println("Car's constructer...");
+	}
 	
 	
 }

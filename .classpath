@@ -7,7 +7,7 @@
 	<classpathentry kind="lib" path="lib/c3p0-0.9.1.2.jar"/>
 	<classpathentry kind="lib" path="lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/spring-aop-4.0.0.RELEASE.jar"/>
-	<classpathentry kind="lib" path="lib/spring-beans-4.0.0.RELEASE.jar"/>
+	<classpathentry kind="lib" path="lib/spring-beans-4.0.0.RELEASE.jar" sourcepath="C:/Users/EVERAF~1/AppData/Local/Temp/.org.sf.feeling.decompiler1560302165758/source/spring-beans-4.0.0.RELEASE-sources.jar"/>
 	<classpathentry kind="lib" path="lib/spring-context-4.0.0.RELEASE.jar"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.16.jar"/>
 	<classpathentry kind="output" path="bin"/>

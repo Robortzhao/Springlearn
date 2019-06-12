@@ -30,10 +30,23 @@ public class ArithmeticCalculatorLoggingProxy {
 			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 				
 				String methodName =method.getName();
-				//日志
+				//日志打印
 				System.out.println("The method "+ methodName+ " begin with "+ Arrays.asList(args));
-				//执行方法
-				Object result = method.invoke(target, args);
+				//调用目标方法
+				Object result = null;
+				try {
+					//前置通知
+					result= method.invoke(target, args);
+					//返回通知，可以访问到方法的返回值
+				} catch (Exception e) {
+					// TODO: handle exception
+					e.printStackTrace();
+					//异常通知：可以访问到方法出现的异常
+				}
+				
+				//后置通知，因为方法可能会出现异常，所以访问不到方法的返回值
+				
+				//打印日志
 				System.out.println("The method "+ methodName+ " end with "+result);
 				return result;
 			}

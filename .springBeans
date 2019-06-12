@@ -20,6 +20,7 @@
 		<config>src/beans-helloworld.xml</config>
 		<config>src/aop-xml-context.xml</config>
 		<config>src/aop-impl-context.xml</config>
+		<config>src/jdbc-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

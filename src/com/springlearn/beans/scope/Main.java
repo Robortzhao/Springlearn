@@ -3,7 +3,6 @@ package com.springlearn.beans.scope;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 import com.springlearn.beans.autowire.Car;
 
 

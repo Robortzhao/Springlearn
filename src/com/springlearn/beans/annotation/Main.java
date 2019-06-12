@@ -3,7 +3,6 @@ package com.springlearn.beans.annotation;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-
 import com.springlearn.beans.annotation.controller.UserController;
 import com.springlearn.beans.annotation.repository.UserRepository;
 import com.springlearn.beans.annotation.service.UserService;

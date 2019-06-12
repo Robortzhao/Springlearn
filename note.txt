@@ -13,8 +13,8 @@
  ii.在方法前加入@Before注解
  ④。可以在通知方法中声明一个类型为JoinPoint的参数，然后就能访问链接细节，如方法名称和参数名
  @Aspect
-@Component
-public class LoggingAspect {
+ @Component
+ public class LoggingAspect {
 	//声明该方法为一个前置通知；在目标方法开始之前执行
 	@Before("execution(* com.springlearn.aop.impl.ArithmeticCalculator.*(int,int))")
 	public void beforeMethod(JoinPoint joinPoint) {

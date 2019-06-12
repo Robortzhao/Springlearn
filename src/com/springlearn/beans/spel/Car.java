@@ -4,7 +4,6 @@ public class Car {
 	private String brand;
 	private double price;
 	
-	//ÂÖÌ¥µÄÖÜ³¤
 	private double tyrePerimeter;
 	
 	public double getTyrePerimeter() {

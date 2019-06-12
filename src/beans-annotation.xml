@@ -21,4 +21,3 @@
 	 <!--  <context:include-filter type="assignable" expression="com.springlearn.beans.annotation.repository.UserRepository"/>-->
 	 <!-- </context:component-scan> -->
 </beans>
- 	

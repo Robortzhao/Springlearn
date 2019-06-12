@@ -1,18 +1,17 @@
-package com.springlearn.beans.collection;
-
-import java.util.List;
+package com.springlearn.beans.helloworld;
 
 public class Person {
 	private String name;
 	private int age;
-	private List<Car> cars;
+	private Car car;
 	
-	public List<Car> getCars() {
-		return cars;
+	public Car getCar() {
+		return car;
 	}
-	public void setCars(List<Car> cars) {
-		this.cars = cars;
+	public void setCar(Car car) {
+		this.car = car;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -25,22 +24,19 @@ public class Person {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Person [name=" + name + ", age=" + age + ", cars=" + cars + "]";
+		return "Person [name=" + name + ", age=" + age + ", car=" + car + "]";
 	}
+	
 	public Person() {
-		
+		// TODO Auto-generated constructor stub
 	}
-	public Person(String name, int age, List<Car> cars) {
+	public Person(String name, int age, Car car) {
 		super();
 		this.name = name;
 		this.age = age;
-		this.cars = cars;
+		this.car = car;
 	}
-	
-	
-	
-	
 }

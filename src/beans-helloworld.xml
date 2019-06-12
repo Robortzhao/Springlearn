@@ -12,18 +12,18 @@
 		id:表示容器中的bean. id 唯一
 	-->
 	<!--属性注入 setter方法-->
-	<bean id="helloworld" class="com.springlearn.bean.HelloWorld">
+	<bean id="helloworld" class="com.springlearn.beans.helloworld.HelloWorld">
 		<property name="name" value="Spring"></property>
 	</bean>
 	
 	<!-- 通过构造方法配置bean的属性,可以指定参数的位置和类型，以区分重载的构造器 -->
-	<bean id="car" class="com.springlearn.bean.Car">
+	<bean id="car" class="com.springlearn.beans.helloworld.Car">
 		<constructor-arg value="Audi" index="0"></constructor-arg>
 		<constructor-arg value="Shanghai" index="1"></constructor-arg>
 		<constructor-arg value="250" type="double"></constructor-arg>
 	</bean>
 	
-	<bean id="car2" class="com.springlearn.bean.Car">
+	<bean id="car2" class="com.springlearn.beans.helloworld.Car">
 		<constructor-arg value="BMW" type="java.lang.String"></constructor-arg>
 		<!-- 属性可以通过value子节点进行配置，特殊字符应用<![CDATA[]]> 包裹起来-->
 		<constructor-arg type="java.lang.String">
@@ -56,7 +56,7 @@
 		<constructor-arg value="250" type="int"></constructor-arg>
 	</bean>
 	
-	<bean id="person1" class="com.springlearn.bean.Person">
+	<bean id="person1" class="com.springlearn.beans.helloworld.Person">
 		<property name="name" value="Tom"></property>
 		<property name="age" value="25"></property>
 		<!-- 关联bean的两种方式 -->
@@ -70,7 +70,7 @@
 		-->
 		<!-- 内部bean，不能被外部访问，只能在内部应用  -->
 		<property name="car">
-			<bean class="com.springlearn.bean.Car">
+			<bean class="com.springlearn.beans.helloworld.Car">
 			<constructor-arg value="pengchi" index="0"></constructor-arg>
 			<constructor-arg value="Shanghai" index="1"></constructor-arg>
 			<constructor-arg value="300000" type="double"></constructor-arg>
@@ -80,7 +80,7 @@
 		
 	</bean>
 	
-	<bean id="person2" class="com.springlearn.bean.Person">
+	<bean id="person2" class="com.springlearn.beans.helloworld.Person">
 		<constructor-arg value="Haizi"></constructor-arg>
 		<constructor-arg value="23"></constructor-arg>
 		<!-- 测试null -->

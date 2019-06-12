@@ -1,4 +1,4 @@
-package com.springlearn.bean;
+package com.springlearn.beans.helloworld;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -17,7 +17,7 @@ public class Main {
 		//1.创建spring的IOC容器对象
 		// ApplicationContext 代表IOC容器
 		// ClassPathXmlApplicationContext是ApplicationContext的实现类
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("applicationContext.xml");
+		ApplicationContext ctx=new ClassPathXmlApplicationContext("beans-helloworld.xml");
 		//2.从IOC容器中获取Bean实例
 		//利用ID定位到IOC容器中的bean
 		//HelloWorld helloworld = (HelloWorld) ctx.getBean("helloworld");

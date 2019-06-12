@@ -10,6 +10,7 @@ import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -20,16 +21,28 @@ import org.springframework.stereotype.Component;
  * @author EverAfter
  *
  */
+/**
+ * 使用@Order来声明通知顺序
+ * @author EverAfter
+ *
+ */
 @Order(2)
 @Aspect
 @Component
 public class LoggingAspect {
 	
 	/**
+	 * 定义一个方法，用于声明切入表达式。一般地，该方法中不需要填入其它代码
+	 * 使用@Pointcut来声明切入点表达式
+	 * 后面的其它通知直接使用方法名来引用当前的切入点表达式
+	 */
+	@Pointcut("execution(* com.springlearn.aop.impl.*.*(int,int))")
+	public void declareJoinPointExpression() {}
+	/**
 	 * 声明该方法为一个前置通知；在目标方法开始之前执行
 	 * @param joinPoint
 	*/
-	@Before("execution(* com.springlearn.aop.impl.*.*(int,int))")
+	@Before("declareJoinPointExpression()")
 	public void beforeMethod(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();
 		List<Object> args=Arrays.asList(joinPoint.getArgs());
@@ -42,7 +55,7 @@ public class LoggingAspect {
 	 * @param joinPoint
 	 */
 	
-	@After("execution(* com.springlearn.aop.impl.*.*(int,int))")
+	@After("declareJoinPointExpression()")
 	public void afterMethod(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("The method "+methodName+" ends");
@@ -55,7 +68,7 @@ public class LoggingAspect {
 	 * @param result
 	 */
 
-	@AfterReturning(value="execution(* com.springlearn.aop.impl.*.*(int,int))",returning = "result")
+	@AfterReturning(value="declareJoinPointExpression()",returning = "result")
 	public void afterReturning(JoinPoint joinPoint,Object result) {
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("The method "+methodName+" ends with "+result);
@@ -67,8 +80,8 @@ public class LoggingAspect {
 	 * @param joinPoint
 	 * @param ex
 	 */
-	@AfterThrowing(value="execution(* com.springlearn.aop.impl.*.*(int,int))",throwing = "ex")
-	public void afterReturning(JoinPoint joinPoint,Exception ex) {
+	@AfterThrowing(value="declareJoinPointExpression()",throwing = "ex")
+	public void afterThrowing(JoinPoint joinPoint,Exception ex) {
 		String methodName = joinPoint.getSignature().getName();
 		System.out.println("The method "+methodName+" occur exception "+ex);
 	}
@@ -77,7 +90,7 @@ public class LoggingAspect {
 	 * 环绕通知类似于动态代理的全过程：ProceedingJoinPoint 类型的参数可以设定是否执行目标方法
 	 * 且环绕通知必须有返回值，返回值即为目标方法的返回值
 	 */
-	@Around("execution(* com.springlearn.aop.impl.*.*(int,int))")
+	@Around("declareJoinPointExpression()")
 	public Object aroundMethod(ProceedingJoinPoint pjd) {
 		Object result=null;
 		String methodName = pjd.getSignature().getName();

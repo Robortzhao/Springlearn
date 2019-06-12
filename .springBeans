@@ -18,7 +18,8 @@
 		<config>src/beans-annotation.xml</config>
 		<config>src/beans-generic-di.xml</config>
 		<config>src/beans-helloworld.xml</config>
-		<config>src/aopContext.xml</config>
+		<config>src/aop-xml-context.xml</config>
+		<config>src/aop-impl-context.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

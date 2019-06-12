@@ -1,11 +1,11 @@
-package com.springlearn.aop.impl;
+package com.springlearn.aop.xml;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
 	public static void main(String[] args) {
-		ApplicationContext ctx=new ClassPathXmlApplicationContext("aop-impl-context.xml");
+		ApplicationContext ctx=new ClassPathXmlApplicationContext("aop-xml-context.xml");
 		
 		/**
 		 * 注意这三种方式的区别
@@ -20,7 +20,7 @@ public class Main {
 		int result = arithmeticCalculator.add(2, 4);
 		System.out.println("-->result:"+result);
 		
-		result = arithmeticCalculator.div(12, 3);
+		result = arithmeticCalculator.div(12, 1);
 		System.out.println("-->result:"+result);
 	}
 }

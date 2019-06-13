@@ -22,6 +22,7 @@
 		<config>src/aop-impl-context.xml</config>
 		<config>src/spring-jdbc.xml</config>
 		<config>src/spring-transaction.xml</config>
+		<config>src/spring-transaction-xml.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

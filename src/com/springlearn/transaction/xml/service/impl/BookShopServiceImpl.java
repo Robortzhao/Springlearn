@@ -5,8 +5,9 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.springlearn.transaction.BookShopService;
 import com.springlearn.transaction.xml.BookShopDao;
-import com.springlearn.transaction.xml.service.BookShopService;
+
 
 public class BookShopServiceImpl implements BookShopService {
 	

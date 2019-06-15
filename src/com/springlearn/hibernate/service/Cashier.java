@@ -1,4 +1,4 @@
-package com.springlearn.transaction.xml.service;
+package com.springlearn.hibernate.service;
 
 import java.util.List;
 

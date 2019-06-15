@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springlearn.transaction.xml.service.BookShopService;
-import com.springlearn.transaction.xml.service.Cashier;
+import com.springlearn.transaction.BookShopService;
+import com.springlearn.transaction.Cashier;
 
 
 public class CashierImpl implements Cashier {

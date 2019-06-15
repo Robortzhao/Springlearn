@@ -6,8 +6,10 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.springlearn.transaction.xml.service.BookShopService;
-import com.springlearn.transaction.xml.service.Cashier;
+import com.springlearn.transaction.BookShopService;
+import com.springlearn.transaction.Cashier;
+
+
 
 public class SpringTransactionTest {
 	

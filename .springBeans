@@ -23,6 +23,7 @@
 		<config>src/spring-jdbc.xml</config>
 		<config>src/spring-transaction.xml</config>
 		<config>src/spring-transaction-xml.xml</config>
+		<config>src/spring-hibernate.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

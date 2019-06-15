@@ -27,7 +27,7 @@ public class JDBCTest {
 		private DepartmentDao departmentDao;
 		private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 		{
-			ctx=new ClassPathXmlApplicationContext("jdbc-context.xml");
+			ctx=new ClassPathXmlApplicationContext("spring-jdbc.xml");
 			jdbcTemplate =(JdbcTemplate) ctx.getBean("jdbcTemplate");
 			employeeDao = ctx.getBean(EmployeeDao.class);
 			departmentDao = ctx.getBean(DepartmentDao.class);
